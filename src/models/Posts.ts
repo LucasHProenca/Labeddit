@@ -4,6 +4,7 @@ export class Posts {
     constructor(
         private id: string,
         private content: string,
+        private comments: number,
         private likes: number,
         private dislikes: number,
         private createdAt: string,
@@ -26,6 +27,10 @@ export class Posts {
 
     public getContent(): string {
         return this.content
+    }
+
+    public getComment(): number {
+        return this.comments
     }
 
     public getLikes(): number {
@@ -58,6 +63,18 @@ export class Posts {
 
     public setContent(value: string): void {
         this.content = value
+    }
+
+    public setComment(value: number): void {
+        this.comments = value
+    }
+
+    public addComment = (): void => {
+        this.comments++
+    }
+
+    public removeComment = (): void => {
+        this.comments--
     }
 
     public setLikes(value: number): void {
@@ -97,6 +114,7 @@ export class Posts {
             id: this.id,
             creator_id: this.creatorId,
             content: this.content,
+            comments: this.comments,
             likes: this.likes,
             dislikes: this.dislikes,
             created_at: this.createdAt,
@@ -108,6 +126,7 @@ export class Posts {
         return {
             id: this.id,
             content: this.content,
+            comments: this.comments,
             likes: this.likes,
             dislikes: this.dislikes,
             createdAt: this.createdAt,

@@ -4,12 +4,12 @@ import { UserDatabase } from "./UsersDatabase";
 
 export class PostDatabase extends BaseDatabase {
   public static TABLE_POSTS = "posts"
-  public static TABLE_LIKES_DISLIKES = "likes_dislikes"
+  public static TABLE_LIKES_DISLIKES = "likes_dislikesPosts"
   public async findPosts(q?: string): Promise<PostDB[]> {
     let result: PostDB[] = []
 
     if (q) {
-      result = await BaseDatabase.connection(PostDatabase.TABLE_POSTS).where("id", "LIKE", `%${q}%`)
+      result = await BaseDatabase.connection(PostDatabase.TABLE_POSTS).where("content", "LIKE", `%${q}%`)
     } else {
       result = await BaseDatabase.connection(PostDatabase.TABLE_POSTS)
     }
@@ -44,7 +44,7 @@ export class PostDatabase extends BaseDatabase {
         `${PostDatabase.TABLE_POSTS}.dislikes`,
         `${PostDatabase.TABLE_POSTS}.created_at`,
         `${PostDatabase.TABLE_POSTS}.updated_at`,
-        `${UserDatabase.TABLE_USERS}.name as creator_name`
+        `${UserDatabase.TABLE_USERS}.nickname as creator_name`
       )
       .join(
         `${UserDatabase.TABLE_USERS}`,

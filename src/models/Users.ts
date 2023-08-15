@@ -3,7 +3,7 @@ import { UserModel, USER_ROLES } from "../types"
 export class Users {
     constructor(
         private id: string,
-        private name: string,
+        private nickname: string,
         private email: string,
         private password: string,
         private role: USER_ROLES,
@@ -14,8 +14,8 @@ export class Users {
         return this.id
     }
 
-    public getName(): string {
-        return this.name
+    public getNickname(): string {
+        return this.nickname
     }
 
     public getEmail(): string {
@@ -38,8 +38,8 @@ export class Users {
         this.id = value
     }
 
-    public setName(value: string): void {
-        this.name = value
+    public setNickname(value: string): void {
+        this.nickname = value
     }
 
     public setEmail(value: string): void {
@@ -61,7 +61,7 @@ export class Users {
     public toUserModel(): UserModel {
         return {
             id: this.id,
-            name: this.name,
+            nickname: this.nickname,
             email: this.email,
             role: this.role,
             createdAt: this.createdAt

@@ -22,7 +22,7 @@ export class UserBusiness {
     private hashManager: HashManager
   ) { }
   public userSignUp = async (input: UserSignupInputDTO): Promise<UserSignupOutputDTO> => {
-    const { name, email, password, } = input
+    const { nickname, email, password, } = input
 
     const id = this.idGenerator.generate()
 
@@ -41,7 +41,7 @@ export class UserBusiness {
 
     const user = new Users(
       id,
-      name,
+      nickname,
       email,
       hashedPassword,
       USER_ROLES.NORMAL,
@@ -50,7 +50,7 @@ export class UserBusiness {
 
     const tokenPayload: TokenPayload = {
       id: user.getId(),
-      name: user.getName(),
+      name: user.getNickname(),
       role: user.getRole()
     }
 
@@ -58,7 +58,7 @@ export class UserBusiness {
 
     const newUser: UserDB = {
       id: user.getId(),
-      name: user.getName(),
+      nickname: user.getNickname(),
       email: user.getEmail(),
       password: user.getPassword(),
       role: user.getRole(),
@@ -95,7 +95,7 @@ export class UserBusiness {
 
     const user = new Users(
       userDB.id,
-      userDB.name,
+      userDB.nickname,
       userDB.email,
       userDB.password,
       userDB.role,
@@ -104,7 +104,7 @@ export class UserBusiness {
 
     const tokenPayload: TokenPayload = {
       id: user.getId(),
-      name: user.getName(),
+      name: user.getNickname(),
       role: user.getRole()
     }
 
@@ -136,7 +136,7 @@ export class UserBusiness {
 
       const user = new Users(
         userDB.id,
-        userDB.name,
+        userDB.nickname,
         userDB.email,
         userDB.password,
         userDB.role,
@@ -152,7 +152,7 @@ export class UserBusiness {
 
   public editUser = async (input: EditUserInputDTO): Promise<EditUserOutputDTO> => {
 
-    const { id, name, email, password, token } = input
+    const { id, nickname, email, password, token } = input
 
     const payload = this.tokenManager.getPayload(token)
 
@@ -169,17 +169,17 @@ export class UserBusiness {
       throw new ForbiddenError("Somente o dono da conta pode edita-la")
     }
     const user = new Users(
-      userDB.id, userDB.name, userDB.email, userDB.password, userDB.role, userDB.created_at
+      userDB.id, userDB.nickname, userDB.email, userDB.password, userDB.role, userDB.created_at
     )
 
-    name && user.setName(name)
+    nickname && user.setNickname(nickname)
     email && user.setEmail(email)
     password && user.setPassword(password)
 
 
     const userEdited: UserDB = {
       id: user.getId(),
-      name: user.getName(),
+      nickname: user.getNickname(),
       email: user.getEmail(),
       password: user.getPassword(),
       role: user.getRole(),
