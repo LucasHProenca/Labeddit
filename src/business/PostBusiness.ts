@@ -43,12 +43,13 @@ export class PostBusiness {
             const post = new Posts(
                 postDB.id,
                 postDB.content,
+                postDB.comments,
                 postDB.likes,
                 postDB.dislikes,
                 postDB.created_at,
                 postDB.updated_at,
                 postDB.creator_id,
-                userIdExists.name
+                userIdExists.nickname
             )
 
             postsModel.push(post.toPostModel())
@@ -78,6 +79,7 @@ export class PostBusiness {
         const post = new Posts(
             id,
             content,
+            0,
             0,
             0,
             new Date().toISOString(),
@@ -111,7 +113,7 @@ export class PostBusiness {
             throw new ForbiddenError("Somente quem criou o post pode editá-lo")
         }
         const post = new Posts(
-            postDB.id, postDB.content, postDB.likes, postDB.dislikes, postDB.created_at, postDB.updated_at, postDB.creator_id, payload.name
+            postDB.id, postDB.content, postDB.comments, postDB.likes, postDB.dislikes, postDB.created_at, postDB.updated_at, postDB.creator_id, payload.name
         )
 
         content && post.setContent(content)
@@ -121,6 +123,7 @@ export class PostBusiness {
             id: post.getId(),
             creator_id: post.getCreatorId(),
             content: post.getContent(),
+            comments: post.getComment(),
             likes: post.getLikes(),
             dislikes: post.getDislikes(),
             created_at: post.getCreatedAt(),
@@ -190,6 +193,7 @@ export class PostBusiness {
         const post = new Posts(
             postDBWithCreatorName.id,
             postDBWithCreatorName.content,
+            postDBWithCreatorName.comment,
             postDBWithCreatorName.likes,
             postDBWithCreatorName.dislikes,
             postDBWithCreatorName.created_at,

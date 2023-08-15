@@ -10,7 +10,7 @@ export enum POST_LIKE {
 
 export interface UserDB {
     id: string,
-    name: string,
+    nickname: string,
     email: string,
     password: string,
     role: USER_ROLES,
@@ -21,6 +21,7 @@ export interface PostDB {
     id: string,
     creator_id: string,
     content: string,
+    comments: number,
     likes: number,
     dislikes: number,
     created_at: string,
@@ -36,6 +37,7 @@ export interface LikesDislikesDB {
 export interface PostModel {
     id: string,
     content: string,
+    comments: number,
     likes: number,
     dislikes: number,
     createdAt: string,
@@ -48,7 +50,7 @@ export interface PostModel {
 
 export interface UserModel {
     id: string,
-    name: string,
+    nickname: string,
     email: string,
     role: USER_ROLES,
     createdAt: string
@@ -58,6 +60,7 @@ export interface PostDBWithCreatorName {
     id: string,
     creator_id: string,
     content: string,
+    comment: number,
     likes: number,
     dislikes: number,
     created_at: string,
