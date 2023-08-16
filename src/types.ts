@@ -8,6 +8,11 @@ export enum POST_LIKE {
     ALREADY_DISLIKED = "ALREADY DISLIKED"
 }
 
+export enum COMMENT_LIKE {
+    ALREADY_LIKED = "ALREADY LIKED",
+    ALREADY_DISLIKED = "ALREADY DISLIKED"
+}
+
 export interface UserDB {
     id: string,
     nickname: string,
@@ -42,6 +47,12 @@ export interface CommentDB {
 export interface LikesDislikesDB {
     user_id: string,
     post_id: string,
+    like: number
+}
+
+export interface LikesDislikesCommentsDB {
+    user_id: string,
+    comment_id: string,
     like: number
 }
 
@@ -89,6 +100,18 @@ export interface PostDBWithCreatorName {
     creator_id: string,
     content: string,
     comments: number,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    updated_at: string,
+    creator_name: string
+}
+
+export interface CommentDBWithCreatorName {
+    id: string,
+    user_id: string,
+    post_id: string,
+    content: string,
     likes: number,
     dislikes: number,
     created_at: string,

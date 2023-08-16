@@ -15,43 +15,59 @@ export class Comments {
         private postCreatorNickname: string
     ){}
 
-    private getId(): string {
+    public getId(): string {
         return this.id
     }
 
-    private getContent(): string {
+    public getContent(): string {
         return this.content
     }
 
-    private getLikes(): number {
+    public getLikes(): number {
         return this.likes
     }
 
-    private getDislikes(): number {
+    public addLike = (): void => {
+        this.likes++
+    }
+
+    public removeLike = (): void => {
+        this.likes--
+    }
+
+    public addDislike = (): void => {
+        this.dislikes++
+    }
+
+    public removeDislike = (): void => {
+        this.dislikes--
+    }
+
+    public getDislikes(): number {
         return this.dislikes
     }
 
-    private getCreatedAt(): string {
+    public getCreatedAt(): string {
         return this.createdAt
     }
 
-    private getUpdatedAt(): string {
+    public getUpdatedAt(): string {
         return this.updatedAt
     }
 
-    private getCreatorId(): string {
+    public getCreatorId(): string {
         return this.creatorId
     }
 
-    private getCreatorNickname(): string {
+    public getCreatorNickname(): string {
         return this.creatorNickname
     }
 
-    private getPostId(): string {
+    public getPostId(): string {
         return this.postId
     }
 
-    private getPostCreatorNickname(): string {
+    public getPostCreatorNickname(): string {
         return this.postCreatorNickname
     }
 
