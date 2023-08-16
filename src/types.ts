@@ -28,6 +28,17 @@ export interface PostDB {
     updated_at: string,
 }
 
+export interface CommentDB {
+    id: string,
+    user_id: string,
+    post_id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    updated_at: string
+}
+
 export interface LikesDislikesDB {
     user_id: string,
     post_id: string,
@@ -45,6 +56,23 @@ export interface PostModel {
     creator: {
         id: string,
         name: string
+    }
+}
+
+export interface CommentModel {
+    id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    createdAt: string,
+    updatedAt: string,
+    creator: {
+        id: string,
+        nickname: string
+    },
+    post: {
+        id: string,
+        nickname: string
     }
 }
 
