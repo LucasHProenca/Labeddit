@@ -192,7 +192,7 @@ export class PostBusiness {
         const post = new Posts(
             postDBWithCreatorName.id,
             postDBWithCreatorName.content,
-            postDBWithCreatorName.comment,
+            postDBWithCreatorName.comments,
             postDBWithCreatorName.likes,
             postDBWithCreatorName.dislikes,
             postDBWithCreatorName.created_at,
