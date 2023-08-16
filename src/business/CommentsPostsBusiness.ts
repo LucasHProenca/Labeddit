@@ -92,6 +92,7 @@ export class CommentsPostsBusiness {
 
         const postIdExists = await this.postDatabase.findPostWithCreatorName(post_id)
 
+        console.log(postIdExists)
         if(!postIdExists) {
             throw new NotFoundError("Post não existe")
         }
@@ -111,7 +112,7 @@ export class CommentsPostsBusiness {
             new Date().toISOString(),
             payload.id,
             payload.name,
-            postIdExists.creator_id,
+            postIdExists.id,
             postCreatorExists.nickname
         )
 
@@ -120,7 +121,7 @@ export class CommentsPostsBusiness {
         const post = new Posts(
             postIdExists.id,
             postIdExists.content,
-            postIdExists.comment,
+            postIdExists.comments,
             postIdExists.likes,
             postIdExists.dislikes,
             postIdExists.created_at,
@@ -133,6 +134,7 @@ export class CommentsPostsBusiness {
             post.addComment()
         }
 
+        
         const postEdited: PostDB = {
             id: post.getId(),
             creator_id: post.getCreatorId(),
@@ -144,6 +146,7 @@ export class CommentsPostsBusiness {
             updated_at: post.getUpdatedAt()
         }
 
+        // console.log(postEdited)
         // const updatedPostDB = post.toPostDB()
         await this.postDatabase.updatePost(postEdited)
 

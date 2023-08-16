@@ -88,7 +88,7 @@ export interface PostDBWithCreatorName {
     id: string,
     creator_id: string,
     content: string,
-    comment: number,
+    comments: number,
     likes: number,
     dislikes: number,
     created_at: string,
