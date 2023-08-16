@@ -92,7 +92,7 @@ export class CommentsPostsBusiness {
 
         const postIdExists = await this.postDatabase.findPostWithCreatorName(post_id)
 
-        console.log(postIdExists)
+        // console.log(postIdExists)
         if(!postIdExists) {
             throw new NotFoundError("Post não existe")
         }
