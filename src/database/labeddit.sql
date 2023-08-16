@@ -86,5 +86,7 @@ VALUES
 
 SELECT * FROM likes_dislikes;
 
+SELECT * FROM comments_posts;
+
 DROP TABLE posts;
 

@@ -38,7 +38,7 @@ export class PostBusiness {
             const userIdExists = await this.userDatabase.findUserById(postDB.creator_id)
 
             if (!userIdExists) {
-                throw new BadRequestError("Vídeo com criador não identificado")
+                throw new BadRequestError("Post com criador não identificado")
             }
             const post = new Posts(
                 postDB.id,
@@ -181,7 +181,6 @@ export class PostBusiness {
         }
 
         const postDBWithCreatorName = await this.postDatabase.findPostWithCreatorName(post_id)
-
 
         if (!postDBWithCreatorName) {
             throw new NotFoundError("'post' não encontrado")
