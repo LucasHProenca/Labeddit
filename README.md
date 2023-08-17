@@ -130,7 +130,7 @@ Feito isso acesse a documentação da [API](https://documenter.getpostman.com/vi
 
 ### Requisições
 
-#### ATENÇÃO! Todos os exemplos são fictícios, pois não haveria sentido em disponibilizarmos os dados de nossos usuários, portanto utilize essa API para construir a sua própria rede social.
+#### ATENÇÃO! Todos os exemplos são fictícios, pois não haveria sentido em disponibilizarmos os dados de nossos usuários, portanto utilize essa API para construir a sua própria aplicação.
 
 #### getUsers
 A requisição getAllUsers tem duas funcionalidades diferentes:
@@ -138,13 +138,13 @@ A requisição getUsers tem a funcionalidade de mostrar a lista de usuários cad
 
 ![getUsersRequest](https://github.com/LucasHProenca/Labook/assets/106993403/eadecb90-6e5b-4b49-97d5-149ee141ae42)
 
-![getUsersResponse](https://github.com/LucasHProenca/Labook/assets/106993403/dd887fc6-0792-419c-95c2-bcc95fd7ed9e)
+![getUsersResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/f6c4895b-6f42-4b6f-bd0e-c4f5e454f62f)
 
 
 #### signUp
 A requisição signUp tem a funcionalidade de cadastrar uma nova conta, porém alguns dados precisam ser inseridos no corpo da requisição, são esses:
 
-"name",
+"nickname",
 "email",
 "password".
 
@@ -155,9 +155,9 @@ Caso a senha não atenda a um padrão mínimo pré-estabelecido, não será poss
 Todos os usuários cadastrados vem com a "role" como "NORMAL" impedindo seu acesso a recursos que são reservados a administradores.
 Como resposta da requisição, o usuário recebe um token de autorização, lembre-se de guardá-lo pois será necessário para acessar as outras funcionalidades do sistema.
 
-![signUpRequest](https://github.com/LucasHProenca/Labook/assets/106993403/2c458ce6-0dda-4f80-9e2e-a90f03f1821a)
+![signUpRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/50aad36c-05bf-4460-b919-e7358ed979e1)
 
-![signUpResponse](https://github.com/LucasHProenca/Labook/assets/106993403/469b8ae4-0960-4d1f-b03d-cb01f9d205f9)
+![signUpResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/ba22eff1-9a96-449e-a666-bd497f7dbf20)
 
 
 #### login
@@ -167,7 +167,7 @@ A requisição login tem a funcionalidade de entrar na sua respectiva conta, por
 "password".
 
 Contudo, foram implementadas as seguintes restrições:
-Caso o "email" e o "password" não correspondam com os utilizados no endpoint "signup", não será possível acessar a conta.
+Caso o "email" e o "password" não correspondam com os utilizados no endpoint "signUp", não será possível acessar a conta.
 Como resposta da requisição, o usuário recebe um token de autorização, lembre-se de guardá-lo pois será necessário para acessar as outras funcionalidades do sistema.
 
 ![loginRequest](https://github.com/LucasHProenca/Labook/assets/106993403/73ff1c27-97be-4bda-9d66-8342057df239)
@@ -176,13 +176,13 @@ Como resposta da requisição, o usuário recebe um token de autorização, lemb
 
 
 ##### editUser
-A requisição editUser permite ao usuário editar suas informações pessoais como "name", "email" e "password", no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+A requisição editUser permite ao usuário editar suas informações pessoais como "nickname", "email" e "password", no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 Apenas o dono da conta pode editar suas informações;
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
 Será necessário abrir uma solicitação para que um administrador informe ao usuário qual é seu "id" que foi gerado no momento em que fez o cadastro no sistema, pois o mesmo não tem acesso a essa informação por questão de segurança.
 Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar as informações de cadastro citadas acima.
 
-![editUserRequest](https://github.com/LucasHProenca/Labook/assets/106993403/a7112f68-10d3-415d-ac2d-7e819c27eb07)
+![editUserRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/a025c8f8-71f5-4943-b2a6-c638d63e7f0a)
 
 
 #### deleteUser
@@ -201,15 +201,15 @@ Caso nada seja escrito após "/posts" será retornada a lista completa de posts,
 
 ![getPostsF1Request](https://github.com/LucasHProenca/Labook/assets/106993403/08f098a8-e84f-4c31-9e6e-a71e48d7deb1)
 
-![getPostsF1Response](https://github.com/LucasHProenca/Labook/assets/106993403/90dcef9a-c41d-4c03-8214-3d57370928fe)
+![getPostsF1Response](https://github.com/LucasHProenca/Labeddit/assets/106993403/e9aaf276-8352-4529-9286-3f1512deb99d)
 
 Caso um post não cadastrado seja enviado como paramêtro, por exemplo, "/posts?q=qualquer-coisa-aqui", será retornada uma lista vazia que é referenciada por [ ];
-Caso não seja inserido um "id" completo representado pelo paramêtro "q", seram retornados todos os posts que contenham os paramêtros inseridos;
+Caso não seja inserido um "content" completo representado pelo paramêtro "q", seram retornados todos os posts que contenham os paramêtros inseridos;
 Caso um post cadastrado seja enviado como paramêtro, apenas ele será retornado, como podemos ver no exemplo "getPostsF2".
 
-![getPostsF2Request](https://github.com/LucasHProenca/Labook/assets/106993403/42f4c7dc-5574-484c-ad0e-96d68a37b941)
+![getPostsF2Request](https://github.com/LucasHProenca/Labeddit/assets/106993403/fa7ede36-4fd2-4757-844e-cb86cd95b450)
 
-![getPostsF2Response](https://github.com/LucasHProenca/Labook/assets/106993403/6c252e55-f898-45d3-b571-25be419e9430)
+![getPostsF2Response](https://github.com/LucasHProenca/Labeddit/assets/106993403/472d8df0-12ec-4929-9fd2-b3bd8cb5546d)
 
 No entanto para ter acesso aos posts será necessário informar um token válido no campo "Authorization" na aba "Headers"
 
@@ -259,6 +259,67 @@ Será necessário passar o token gerado no login para comprovar que a pessoa é 
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível deletar a sua publicação.
 
 ![deletePostRequest](https://github.com/LucasHProenca/Labook/assets/106993403/89dce26f-752b-41ad-bb30-6197d715502f)
+
+
+#### getComments
+A requisição getComments permite ao usuário visualizar lista de comentários publicados em um determinado post, contudo algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
+Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", com isso torna-se possível visualizar todos os comentários do post.
+
+![getCommentsRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/dc375462-c8f3-4c1d-99ff-f1b27422de0c)
+
+![getCommentsResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/958c915a-a5e7-424d-80b8-ed6eae1bde75)
+
+
+#### createComment
+A requisição createComment permite ao usuário criar um novo comentário em um post, informando o conteúdo "content" da mesma no corpo da requisição.
+Entretanto é necessário também informar:
+
+O token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", com isso torna-se possível criar um comentário no post.
+
+![createCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/d6445f65-ad73-4c01-85f5-0ec2b451d8a7)
+
+
+#### editComment
+A requisição editComment permite ao usuário editar o conteúdo "content" do seu comentário, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
+Apenas o dono do comentário pode edita-lo;
+Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+Também é requerido o "id" específico do comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", então, torna-se possível editar seu comentário.
+
+![editCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/ef188251-4728-4c41-bcf8-20e38ea60465)
+
+
+#### likeOrDislikeComment
+A requisição likeOrDislikeComment tem duas funcionalidades que, permitem ao usuário manifestar se gostou ou não gostou do conteúdo comentado por outra pessoa, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
+Quem criou o comentário não pode dar like ou dislike no mesmo;
+Caso dê um like em um comentário que já tenha dado like, o like é desfeito;
+Caso dê um dislike em um comentário que já tenha dado dislike, o dislike é desfeito;
+Caso dê um like em um comentário que tenha dado dislike, o like sobrescreve o dislike;
+Caso dê um dislike em um comentário que tenha dado like, o dislike sobrescreve o like;
+
+Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+Também é requerido o "id" específico do comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar a sua publicação.
+Caso queira dar like num comentário, basta informar "like": true, no corpo da requisição "likeCommentF1";
+
+![likeCommentF1Request](https://github.com/LucasHProenca/Labeddit/assets/106993403/f77eea55-844c-4770-9261-c8cd6675d88e)
+
+Caso queira dar dislike num comentário, basta informar "like": false, no corpo da requisição "dislikeComentárioF2".
+
+![dislikeCommentF2Request](https://github.com/LucasHProenca/Labeddit/assets/106993403/7c082b7d-7c18-46ad-9545-60f2e70f9d8e)
+
+
+#### deleteComment
+A requisição deleteComment permite ao usuário excluir seu comentário, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
+Apenas o dono do comentário ou um administrador podem apagar um comment;
+Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+Também é requerido o "id" específico da comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível deletar seu comentário.
+
+![deleteCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/35ce5a82-ccca-4fb6-999f-2e744598b11e)
 
 
 ---
