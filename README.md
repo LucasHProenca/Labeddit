@@ -1,4 +1,4 @@
-<img align="center" src="https://github.com/LucasHProenca/Labook/assets/106993403/2a90d4e0-9387-4d47-b774-99c6484c4302" width="100%;" alt="" />
+<img align="center" src="https://github.com/LucasHProenca/Labeddit/assets/106993403/6003b6f7-0030-4958-ba9e-5ad4f9718f3d" width="100%;" alt="" />
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## 💻 Sobre o projeto
 
-🖥 Labook - Essa API foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
+🖥 Labeddit - Essa API foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
 Este projeto possui inúmeras funcionalidades, as quais detalharemos mais adiante.
 
 Projeto desenvolvido durante o **Bootcamp Web Full-Stack** da [Labenu](https://www.labenu.com.br/curso-de-programacao-web-full-stack-integral).
@@ -32,6 +32,11 @@ Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de 
   - [x] editPost
   - [x] likeOrDislikePost
   - [x] deletePost
+  - [x] getComments
+  - [x] createComment
+  - [x] editComment
+  - [x] likeOrDislikeComment
+  - [x] deleteComment  
 
 ---
 
@@ -51,7 +56,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone link-do-repositório-git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Labook
+$ cd Labeddit
 
 # Para abrir o vsCode
 $ code .
@@ -96,7 +101,7 @@ Se não aparecer nenhum aviso ou deu tudo certo, pode prosseguir!
 ##### Criando a conexão
 
 1. Dê um nome para a conexão
-2. Selecione o arquivo: **labook.db**
+2. Selecione o arquivo: **labeddit.db**
 3. Salve a conexão
 
 ![image](https://github.com/LucasHProenca/Labook/assets/106993403/b0be9d2a-a2c3-4ede-9ba8-6f437ef6cf76)
@@ -109,9 +114,11 @@ Caso tenha dado tudo certo, irá aparecer no menu do banco de dados o nome de su
 
 #### Inserindo as tabelas no banco de dados
 
-Para criar as tabelas, basta clicar em "execute" em cada um dos três como mostra a imagem abaixo:
+Para criar as tabelas, basta clicar em "execute" em cada um como mostram as imagens abaixo:
 
-![image](https://github.com/LucasHProenca/Labook/assets/106993403/d6417113-21de-4a81-81ca-3eb98861eed7)
+![image](https://github.com/LucasHProenca/Labook/assets/106993403/aca021a6-488d-443e-8b39-395ae961d868)
+
+![image](https://github.com/LucasHProenca/Labook/assets/106993403/f2b4019e-30a6-4ae6-aa38-5c2839711b66)
 
 ### 💾 Configurando o .env
 
@@ -119,7 +126,7 @@ Lembre-se de configurar o arquivo .env como está feito no exemplo em .env.examp
 
 ![image](https://github.com/LucasHProenca/Labook/assets/106993403/d831941b-7f6a-45b1-ac00-2e82aec1b36c)
 
-Feito isso acesse a documentação da [API](https://documenter.getpostman.com/view/27682612/2s9Xy3trjx#abcf8822-c648-44df-901d-cbed6482d1e4) e clique em "Run in Postman" localizado no canto superior direito para abrir dentro do app.
+Feito isso acesse a documentação da [API](https://documenter.getpostman.com/view/27682612/2s9Y5R36ij#ad2c5672-46e9-491f-aeca-96ac4e504ed1) e clique em "Run in Postman" localizado no canto superior direito para abrir dentro do app.
 
 ### Requisições
 
