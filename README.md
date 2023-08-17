@@ -81,7 +81,7 @@ Para manipularmos manualmente código SQL será necessário instalar no VSCode a
 
 #### Acessando o menu da extensão 
 
-Se a extensão for instalada corretamente, aparecerá no menu de navegação lateral à esquerda o ícone de banco de dados (destacado com a seta laranja). Esse é o menu da extensão e é onde você irá se conectar com o arquivo labook.db.
+Se a extensão for instalada corretamente, aparecerá no menu de navegação lateral à esquerda o ícone de banco de dados (destacado com a seta laranja). Esse é o menu da extensão e é onde você irá se conectar com o arquivo labeddit.db.
 
 ![image](https://github.com/LucasHProenca/Labook/assets/106993403/ff86ed0e-4a23-4fa1-bc47-6254e0b40c5c)
 
