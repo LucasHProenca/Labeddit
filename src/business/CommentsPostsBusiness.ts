@@ -88,12 +88,6 @@ export class CommentsPostsBusiness {
 
         const id = this.idGenerator.generate()
 
-        const commentIdExists = await this.commentDatabase.findComment(id)
-
-        if(commentIdExists) {
-            throw new BadRequestError("'id' já existe")
-        }
-
         const postIdExists = await this.postDatabase.findPostWithCreatorName(post_id)
 
         // console.log(postIdExists)
