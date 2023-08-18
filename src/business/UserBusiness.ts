@@ -27,16 +27,15 @@ export class UserBusiness {
     const id = this.idGenerator.generate()
 
     const userDBExists = await this.userDatabase.findUserByEmail(email)
-    const userDBIdExists = await this.userDatabase.findUserById(id)
-
+    const userDBNicknameExists = await this.userDatabase.findUserByNickname(nickname)
     const hashedPassword = await this.hashManager.hash(password)
-
-    if (userDBIdExists) {
-      throw new BadRequestError("'id' já cadastrado")
-    }
 
     if (userDBExists) {
       throw new BadRequestError("'email' já cadastrado")
+    }
+
+    if (userDBNicknameExists) {
+      throw new BadRequestError("'nickname' já cadastrado")
     }
 
     const user = new Users(
@@ -47,6 +46,7 @@ export class UserBusiness {
       USER_ROLES.NORMAL,
       new Date().toISOString()
     )
+
 
     const tokenPayload: TokenPayload = {
       id: user.getId(),
@@ -157,7 +157,7 @@ export class UserBusiness {
     const payload = this.tokenManager.getPayload(token)
 
     if (!payload) {
-      throw new UnauthorizedError()
+      throw new BadRequestError("Token inválido")
     }
     const userDB = await this.userDatabase.findUserById(id)
 
@@ -199,7 +199,7 @@ export class UserBusiness {
     const payload = this.tokenManager.getPayload(token)
 
     if (!payload) {
-      throw new UnauthorizedError()
+      throw new BadRequestError("Token inválido")
     }
 
     const userIdExists = await this.userDatabase.findUserById(id)

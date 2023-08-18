@@ -65,16 +65,10 @@ export class PostBusiness {
         const payload = this.tokenManager.getPayload(token)
 
         if (!payload) {
-            throw new UnauthorizedError()
+            throw new BadRequestError("Token inválido")
         }
 
         const id = this.idGenerator.generate()
-
-        const postIdExists = await this.postDatabase.findPost(id)
-
-        if (postIdExists) {
-            throw new BadRequestError("'id' já existe")
-        }
 
         const post = new Posts(
             id,
