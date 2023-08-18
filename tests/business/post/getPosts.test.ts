@@ -21,7 +21,7 @@ describe("Testando getPosts", () => {
 
     const output = await postBusiness.getPosts(input)
 
-    expect(output).toHaveLength(2)
+    expect(output).toHaveLength(3)
     expect(output).toEqual([
         {
             id: "id-mock-post1",
@@ -49,6 +49,19 @@ describe("Testando getPosts", () => {
                 name: "Astrodev"
             }
         },
+        {
+          id: "id-mock-post3",
+          content: "teste",
+          comments: 1, 
+          likes: 3,
+          dislikes: 6,
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String),
+          creator: {
+            id: "id-mock-astrodev",
+            name: "Astrodev"
+          }
+        }
     ])
   })
 

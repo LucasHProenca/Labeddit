@@ -23,6 +23,16 @@ const postsMock: PostDB[] = [
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
     },
+    {
+      id: "id-mock-post3",
+      creator_id: "id-mock-astrodev",
+      content: "teste",
+      comments: 1, 
+      likes: 3,
+      dislikes: 6,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
 ]
 
 const postWithCreatorNameMock: PostDBWithCreatorName[] = [
@@ -43,23 +53,34 @@ const postWithCreatorNameMock: PostDBWithCreatorName[] = [
     content: "teste",
     comments: 1, 
     likes: 3,
-    dislikes: 5,
+    dislikes: 6,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     creator_name: "Astrodev"
+},
+{
+  id: "id-mock-post3",
+  creator_id: "id-mock-astrodev",
+  content: "teste",
+  comments: 1, 
+  likes: 3,
+  dislikes: 6,
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+  creator_name: "Astrodev"
 },
 ]
 
 const likeDB: LikesDislikesDB[] = [
   {
     user_id: "id-mock-fulano",
-    post_id: "id-mock-post1",
+    post_id: "id-mock-post2",
     like: 0
   },
   {
     user_id: "id-mock-astrodev",
-    post_id: "id-mock-post2",
-    like: 0
+    post_id: "id-mock-post1",
+    like: 1
   },
 ]
 
@@ -99,14 +120,6 @@ export class PostDatabaseMock extends BaseDatabase {
       likeDislikeDB: LikesDislikesDB
     ): Promise<POST_LIKE | undefined> => {
   
-      // const [result]: Array<LikesDislikesDB | undefined> = await BaseDatabase
-      //   .connection(PostDatabaseMock.TABLE_LIKES_DISLIKES)
-      //   .select()
-      //   .where({
-      //     user_id: likeDislikeDB.user_id,
-      //     post_id: likeDislikeDB.post_id
-      //   })
-
       const [result]: Array<LikesDislikesDB | undefined> = likeDB.filter((post => post.post_id === likeDislikeDB.post_id &&
         post.user_id === likeDislikeDB.user_id))
 
@@ -129,5 +142,47 @@ export class PostDatabaseMock extends BaseDatabase {
     }
   
     public insertLikeDislike = async (likeDislikeDB: LikesDislikesDB): Promise<void> => {
+    }
+
+    public addDislike = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.dislikes++
+      }
+    }
+
+    public addLike = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.likes++
+      }
+    }
+
+    public addComment = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.comments++
+      }
+    }
+
+    public removeDislike = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.dislikes--
+      }
+    }
+
+    public removeLike = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.likes--
+      }
+    }
+
+    public removeComment = async (postId: string) => {
+      const post = postWithCreatorNameMock.find(p => p.id === postId)
+      if(post) {
+        post.comments--
+      }
     }
 }

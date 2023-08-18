@@ -20,6 +20,16 @@ const commentsMock: CommentDB[] = [{
     dislikes: 4,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
+},
+{
+    id: "id-mock-comment3",
+    user_id: "id-mock-astrodev",
+    post_id: "id-mock-post2",
+    content: "comentário 2",
+    likes: 2,
+    dislikes: 4,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
 }
 ]
 
@@ -46,19 +56,30 @@ const commentWithCreatorNameMock: CommentDBWithCreatorName[] = [
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         creator_name: "Astrodev"
+    },
+    {
+        id: "id-mock-comment3",
+        user_id: "id-mock-astrodev",
+        post_id: "id-mock-post2",
+        content: "comentário 2",
+        likes: 2,
+        dislikes: 4,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        creator_name: "Astrodev"
     }
 ]
 
 const likeDB: LikesDislikesCommentsDB[] = [
     {
         user_id: "id-mock-fulano",
-        comment_id: "id-mock-post1",
+        comment_id: "id-mock-comment2",
         like: 0
     },
     {
         user_id: "id-mock-astrodev",
-        comment_id: "id-mock-post2",
-        like: 0
+        comment_id: "id-mock-comment1",
+        like: 1
     },
 ]
 
