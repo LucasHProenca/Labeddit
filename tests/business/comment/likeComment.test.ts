@@ -82,4 +82,64 @@ describe("Testando likeComment", () => {
             }
         }
       })
+
+      test("deve inserir um like num post que já tenha dado like", async () => {
+        const input = PutLikeCommentSchema.parse({
+            comment_id: "id-mock-comment1",
+            token: "token-mock-astrodev",
+            like: true
+        })
+
+        const output = await commentBusiness.likeDislikeComment(input)
+
+        expect(output).toBe(undefined)
+    })
+
+    test("deve inserir um dislike num post que já tenha dado like", async () => {
+        const input = PutLikeCommentSchema.parse({
+            comment_id: "id-mock-comment1",
+            token: "token-mock-astrodev",
+            like: false
+        })
+
+        const output = await commentBusiness.likeDislikeComment(input)
+
+        expect(output).toBe(undefined)
+    })
+
+    test("deve inserir um dislike num post que já tenha dado dislike", async () => {
+        const input = PutLikeCommentSchema.parse({
+            comment_id: "id-mock-comment2",
+            token: "token-mock-fulano",
+            like: false
+        })
+
+        const output = await commentBusiness.likeDislikeComment(input)
+
+        expect(output).toBe(undefined)
+    })
+
+    test("deve inserir um dislike num post que já tenha dado dislike", async () => {
+        const input = PutLikeCommentSchema.parse({
+            comment_id: "id-mock-comment2",
+            token: "token-mock-fulano",
+            like: true
+        })
+
+        const output = await commentBusiness.likeDislikeComment(input)
+
+        expect(output).toBe(undefined)
+    })
+
+    test("deve inserir um dislike num post que já tenha dado dislike", async () => {
+        const input = PutLikeCommentSchema.parse({
+            comment_id: "id-mock-comment3",
+            token: "token-mock-fulano",
+            like: true
+        })
+
+        const output = await commentBusiness.likeDislikeComment(input)
+
+        expect(output).toBe(undefined)
+    })
 })
