@@ -1,4 +1,3 @@
-import { BadRequestError } from "../../../src/errors/BadRequestError"
 import { TokenManagerMock } from "../../mocks/TokenManagerMock"
 import { UserDatabaseMock } from "../../mocks/UserDatabaseMock"
 import { CommentsPostsBusiness } from "../../../src/business/CommentsPostsBusiness"

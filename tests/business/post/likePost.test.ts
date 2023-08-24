@@ -1,16 +1,12 @@
-import { BadRequestError } from "../../../src/errors/BadRequestError"
 import { TokenManagerMock } from "../../mocks/TokenManagerMock"
 import { UserDatabaseMock } from "../../mocks/UserDatabaseMock"
 import { PostBusiness } from "../../../src/business/PostBusiness"
 import { PostDatabaseMock } from "../../mocks/PostDatabaseMock"
 import { IdGeneratorMock } from "../../mocks/IdGeneratorMock"
-import { EditPostSchema } from "../../../src/dtos/editPost.dto"
 import { UnauthorizedError } from "../../../src/errors/UnauthorizedError"
 import { NotFoundError } from "../../../src/errors/NotFoundError"
 import { ForbiddenError } from "../../../src/errors/ForbiddenError"
 import { PutLikePostSchema } from "../../../src/dtos/putLikePost.dto"
-import { LikesDislikesDB, PostDB, PostDBWithCreatorName, POST_LIKE } from "../../../src/types"
-import { Posts } from "../../../src/models/Posts"
 
 describe("Testando likePost", () => {
     const postBusiness = new PostBusiness(

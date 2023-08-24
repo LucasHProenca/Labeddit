@@ -1,4 +1,3 @@
-import { BadRequestError } from "../../../src/errors/BadRequestError"
 import { TokenManagerMock } from "../../mocks/TokenManagerMock"
 import { UserDatabaseMock } from "../../mocks/UserDatabaseMock"
 import { CommentsPostsBusiness } from "../../../src/business/CommentsPostsBusiness"
@@ -8,7 +7,6 @@ import { CommentDatabaseMock } from "../../mocks/CommentDatabaseMock"
 import { UnauthorizedError } from "../../../src/errors/UnauthorizedError"
 import { NotFoundError } from "../../../src/errors/NotFoundError"
 import { ForbiddenError } from "../../../src/errors/ForbiddenError"
-import { DeleteCommentPostSchema } from "../../../src/dtos/deleteCommentPost.dto"
 import { PutLikeCommentSchema } from "../../../src/dtos/putLikeCommentPost.dto"
 
 describe("Testando likeComment", () => {
