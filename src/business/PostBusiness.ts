@@ -8,11 +8,13 @@ import { PutLikePostInputDTO, PutLikePostOutputDTO } from "../dtos/putLikePost.d
 import { BadRequestError } from "../errors/BadRequestError"
 import { NotFoundError } from "../errors/NotFoundError"
 import { Posts } from "../models/Posts"
-import { LikesDislikesDB, PostDB, PostModel, POST_LIKE, USER_ROLES } from "../types"
+import { LikesDislikesDB, PostDB, PostLikeModel, PostModel, POST_LIKE, USER_ROLES } from "../types"
 import { IdGenerator } from "../services/IdGenerator"
 import { TokenManager } from "../services/TokenManager"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
 import { ForbiddenError } from "../errors/ForbiddenError"
+import { GetPostLikeInputDTO, GetPostLikeOutputDTO } from "../dtos/getLikePost.dto"
+import { PostVote } from "../models/PostLikes"
 
 
 export class PostBusiness {
@@ -235,4 +237,29 @@ export class PostBusiness {
 
         return output
     }
+
+    public async getPostsLikes(input: GetPostLikeInputDTO): Promise<GetPostLikeOutputDTO> {
+        const { token } = input;
+    
+        const payload = this.tokenManager.getPayload(token);
+        if (payload === null) {
+          throw new BadRequestError("Token inválido");
+        }
+    
+        const postLikeModel: PostLikeModel[] = []
+        const postVotesDB = await this.postDatabase.findPostsLikes();
+    
+        for(let postVoteDB of postVotesDB) {
+            const postVote = new PostVote(
+            postVoteDB.user_id,
+            postVoteDB.post_id,
+            postVoteDB.like
+          );
+
+          postLikeModel.push(postVote.toPostVoteModel())
+        }
+    
+        const output: GetPostLikeOutputDTO = postLikeModel
+        return output
+      }
 }

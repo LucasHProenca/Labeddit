@@ -84,7 +84,7 @@ VALUES
 ("u002", "p002", 7),
 ("u003", "p003", 2);
 
-SELECT * FROM likes_dislikes;
+SELECT * FROM likes_dislikesPosts;
 
 SELECT * FROM comments_posts;
 

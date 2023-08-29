@@ -70,6 +70,12 @@ export interface PostModel {
     }
 }
 
+export interface PostLikeModel {
+    userId: string,
+    postId: string,
+    like: number
+}
+
 export interface CommentModel {
     id: string,
     content: string,

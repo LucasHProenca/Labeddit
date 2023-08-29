@@ -16,6 +16,20 @@ export class PostDatabase extends BaseDatabase {
     return result
   }
 
+  public async findPostsLikes(): Promise<LikesDislikesDB[]> {
+    let result: LikesDislikesDB[] = []
+    result = await BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
+    return result
+  }
+
+  public async findVoteByUserAndPostId(user_id: string, post_id: string) {
+    const [result]: LikesDislikesDB[] | undefined[] = await BaseDatabase
+      .connection(PostDatabase.TABLE_LIKES_DISLIKES)
+      .where({ user_id, post_id });
+
+    return result;
+  }
+
   public async findPost(id: string): Promise<PostDB | undefined> {
     const [postDBExists]: PostDB[] = await BaseDatabase.connection(PostDatabase.TABLE_POSTS).where({ id })
     return postDBExists
