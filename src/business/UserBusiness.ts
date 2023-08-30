@@ -165,22 +165,18 @@ export class UserBusiness {
       throw new NotFoundError("'user' não encontrado")
     }
 
-    const userDBNicknameExists = await this.userDatabase.findUserByNickname(nickname as string) 
+    const userDBNicknameExists = await this.userDatabase.findUserByNickname(nickname as string)
 
     if (userDBNicknameExists) {
-      if(nickname !== payload.name) {
+      if (nickname !== payload.name) {
         throw new BadRequestError("'nickname' já cadastrado")
       }
     }
-
     const userDBExists = await this.userDatabase.findUserByEmail(email as string)
 
-    if (userDBExists) {
-      if(userDBNicknameExists?.email !== email) {
-        throw new BadRequestError("'email' já cadastrado")
-      }
+    if (userDBExists && email !== userDB.email) {
+      throw new BadRequestError("'email' já cadastrado")
     }
-
     if (payload.id !== userDB.id) {
       throw new ForbiddenError("Somente o dono da conta pode edita-la")
     }
