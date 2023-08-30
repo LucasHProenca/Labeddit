@@ -171,12 +171,14 @@ export class UserBusiness {
       if (nickname !== payload.name) {
         throw new BadRequestError("'nickname' já cadastrado")
       }
+      throw new BadRequestError("'nickname' já cadastrado")
     }
     const userDBExists = await this.userDatabase.findUserByEmail(email as string)
 
     if (userDBExists && email !== userDB.email) {
       throw new BadRequestError("'email' já cadastrado")
     }
+
     if (payload.id !== userDB.id) {
       throw new ForbiddenError("Somente o dono da conta pode edita-la")
     }
