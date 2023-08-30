@@ -97,6 +97,11 @@ export class PostDatabaseMock extends BaseDatabase {
         return postsMock
       }
     }
+
+    public async getLikes(input: any) {
+      return likeDB.filter((post) => post.post_id === input.post_id && post.user_id === input.user_id)
+      // return await BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES).where({user_id: input.user_id, post_id: input.post_id})
+    }
   
     public async findPost(id: string): Promise<PostDB | undefined> {
       return postsMock.filter(post => post.id === id)[0]

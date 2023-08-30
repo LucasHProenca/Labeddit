@@ -92,6 +92,11 @@ export class CommentDatabaseMock extends BaseDatabase {
         return commentsMock.filter(comment => comment.post_id === post_id)
     }
 
+    public async getLikes(input: any) {
+        return likeDB.filter((comment) => comment.comment_id === input.comment_id && comment.user_id === input.user_id)
+        // return await BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES).where({user_id: input.user_id, post_id: input.post_id})
+      }
+
     public async findComment(id: string): Promise<CommentDB | undefined> {
         return commentsMock.filter(comment => comment.id === id)[0]
     }
