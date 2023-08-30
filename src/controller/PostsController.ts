@@ -126,9 +126,10 @@ export class PostController {
 
     public getPostsLikes = async (req: Request, res: Response) => {
         try {
-            const input = GetPostLikeSchema.parse({
-                token: req.headers.authorization
-            })
+            const input = {
+                token: req.headers.authorization,
+                postId: req.params.id
+            }
             const posts = await this.postBusiness.getPostsLikes(input)
 
             res.status(200).send(posts)

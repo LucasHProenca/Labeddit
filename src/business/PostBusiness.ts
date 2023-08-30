@@ -238,28 +238,46 @@ export class PostBusiness {
         return output
     }
 
-    public async getPostsLikes(input: GetPostLikeInputDTO): Promise<GetPostLikeOutputDTO> {
-        const { token } = input;
+    public async getPostsLikes(input: any) {
+        const { token, postId } = input;
     
         const payload = this.tokenManager.getPayload(token);
         if (payload === null) {
           throw new BadRequestError("Token inválido");
         }
-    
-        const postLikeModel: PostLikeModel[] = []
-        const postVotesDB = await this.postDatabase.findPostsLikes();
-    
-        for(let postVoteDB of postVotesDB) {
-            const postVote = new PostVote(
-            postVoteDB.user_id,
-            postVoteDB.post_id,
-            postVoteDB.like
-          );
+        
+        const user = await this.userDatabase.findUserById(payload.id)
+        const post = await this.postDatabase.findPost(postId)
 
-          postLikeModel.push(postVote.toPostVoteModel())
+        if(!user) {
+            throw new NotFoundError("'user' não encontrado")
         }
-    
-        const output: GetPostLikeOutputDTO = postLikeModel
+
+        if(!post) {
+            throw new NotFoundError("'post' não encontrado")
+        }
+
+        const searchInDb = {
+            user_id: user.id,
+            post_id: post.id
+        }
+
+        const output = await this.postDatabase.getLikes(searchInDb)
         return output
+        // const postLikeModel: PostLikeModel[] = []
+        // const postVotesDB = await this.postDatabase.findPostsLikes();
+    
+        // for(let postVoteDB of postVotesDB) {
+        //     const postVote = new PostVote(
+        //     postVoteDB.user_id,
+        //     postVoteDB.post_id,
+        //     postVoteDB.like
+        //   );
+
+        //   postLikeModel.push(postVote.toPostVoteModel())
+        // }
+    
+        // const output: GetPostLikeOutputDTO = postLikeModel
+        // return output
       }
 }
