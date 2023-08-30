@@ -5,6 +5,7 @@ import { CreateCommentPostInputDTO, CreateCommentPostOutputDTO } from "../dtos/c
 import { DeleteCommentPostInputDTO, DeleteCommentPostOutputDTO } from "../dtos/deleteCommentPost.dto";
 import { EditCommentPostInputDTO, EditCommentPostOutputDTO } from "../dtos/editCommentPost.dto";
 import { GetCommentInputDTO, GetCommentOutputDTO } from "../dtos/getCommentPost.dto";
+import { GetCommentLikeInputDTO } from "../dtos/getLikeComment.dto";
 import { PutLikeCommentInputDTO, PutLikeCommentOutputDTO } from "../dtos/putLikeCommentPost.dto";
 import { BadRequestError } from "../errors/BadRequestError";
 import { ForbiddenError } from "../errors/ForbiddenError";
@@ -365,4 +366,32 @@ export class CommentsPostsBusiness {
 
         return output
     }
+
+    public async getCommentsLikes(input: GetCommentLikeInputDTO): Promise<GetCommentOutputDTO> {
+        const { token, comment_id } = input;
+    
+        const payload = this.tokenManager.getPayload(token);
+        if (payload === null) {
+          throw new BadRequestError("Token inválido");
+        }
+        
+        const user = await this.userDatabase.findUserById(payload.id)
+        const comment = await this.commentDatabase.findComment(comment_id)
+
+        if(!user) {
+            throw new NotFoundError("'user' não encontrado")
+        }
+
+        if(!comment) {
+            throw new NotFoundError("'comment' não encontrado")
+        }
+
+        const searchInDb = {
+            user_id: user.id,
+            comment_id: comment.id
+        }
+
+        const output: GetCommentOutputDTO = await this.commentDatabase.getLikes(searchInDb)
+        return output
+      }
 }

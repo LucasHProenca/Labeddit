@@ -4,7 +4,6 @@ import { PostBusiness } from "../business/PostBusiness";
 import { CreatePostSchema } from "../dtos/createPost.dto";
 import { DeletePostSchema } from "../dtos/deletePost.dto";
 import { EditPostSchema } from "../dtos/editPost.dto";
-import { GetPostLikeSchema } from "../dtos/getLikePost.dto";
 import { GetPostSchema } from "../dtos/getPost.dto";
 import { PutLikePostSchema } from "../dtos/putLikePost.dto";
 import { BaseError } from "../errors/BaseError";

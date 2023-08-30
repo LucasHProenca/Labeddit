@@ -5,6 +5,7 @@ import { CreateCommentPostSchema } from "../dtos/createCommentPost.dto";
 import { DeleteCommentPostSchema } from "../dtos/deleteCommentPost.dto";
 import { EditCommentPostSchema } from "../dtos/editCommentPost.dto";
 import { GetCommentSchema } from "../dtos/getCommentPost.dto";
+import { GetCommentLikeSchema } from "../dtos/getLikeComment.dto";
 import { PutLikeCommentSchema } from "../dtos/putLikeCommentPost.dto";
 import { BaseError } from "../errors/BaseError";
 
@@ -111,6 +112,28 @@ export class CommentsPostsController {
                 like: req.body.like
             })
             const output = await this.commentsPostsBusiness.likeDislikeComment(input)
+
+            res.status(200).send(output)
+        } catch (error) {
+            console.log(error)
+
+            if (error instanceof ZodError) {
+                res.status(400).send(error.issues)
+            } else if (error instanceof BaseError) {
+                res.status(error.statusCode).send(error.message)
+            } else {
+                res.status(500).send("Erro inesperado")
+            }
+        }
+    }
+
+    public getCommmentsLikes = async (req: Request, res: Response) => {
+        try {
+            const input = GetCommentLikeSchema.parse({
+                token: req.headers.authorization,
+                comment_id: req.params.id
+            })
+            const output = await this.commentsPostsBusiness.getCommentsLikes(input)
 
             res.status(200).send(output)
         } catch (error) {

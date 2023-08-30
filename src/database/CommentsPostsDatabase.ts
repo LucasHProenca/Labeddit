@@ -15,6 +15,10 @@ export class CommentsPostsDatabase extends BaseDatabase {
         return result
     }
 
+    public async getLikes(input: any) {
+    return await BaseDatabase.connection(CommentsPostsDatabase.TABLE_LIKES_DISLIKES_COMMENTS).where({user_id: input.user_id, comment_id: input.comment_id})
+  }
+
     public async findComment(id: string): Promise<CommentDB | undefined> {
         const [commentDBExists]: CommentDB[] = await BaseDatabase.connection(CommentsPostsDatabase.TABLE_COMMENTS).where({ id })
         return commentDBExists

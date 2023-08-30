@@ -13,8 +13,7 @@ import { IdGenerator } from "../services/IdGenerator"
 import { TokenManager } from "../services/TokenManager"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
 import { ForbiddenError } from "../errors/ForbiddenError"
-import { GetPostLikeInputDTO, GetPostLikeOutputDTO } from "../dtos/getLikePost.dto"
-import { PostVote } from "../models/PostLikes"
+
 
 
 export class PostBusiness {
@@ -264,20 +263,5 @@ export class PostBusiness {
 
         const output = await this.postDatabase.getLikes(searchInDb)
         return output
-        // const postLikeModel: PostLikeModel[] = []
-        // const postVotesDB = await this.postDatabase.findPostsLikes();
-    
-        // for(let postVoteDB of postVotesDB) {
-        //     const postVote = new PostVote(
-        //     postVoteDB.user_id,
-        //     postVoteDB.post_id,
-        //     postVoteDB.like
-        //   );
-
-        //   postLikeModel.push(postVote.toPostVoteModel())
-        // }
-    
-        // const output: GetPostLikeOutputDTO = postLikeModel
-        // return output
       }
 }
