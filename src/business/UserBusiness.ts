@@ -176,7 +176,7 @@ export class UserBusiness {
     const userDBExists = await this.userDatabase.findUserByEmail(email as string)
 
     if (userDBExists) {
-      if(!userDBNicknameExists?.email) {
+      if(userDBNicknameExists?.email !== email) {
         throw new BadRequestError("'email' já cadastrado")
       }
     }
