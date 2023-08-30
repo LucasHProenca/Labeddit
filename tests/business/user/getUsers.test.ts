@@ -41,22 +41,6 @@ describe("Testando getUsers", () => {
     ])
   })
 
-//   test("deve disparar um erro se o token não for de admin", async () => {
-//     expect.assertions(2)
-//     try {
-//         const input = GetUsersSchema.parse({
-//             token: "token-mock-fulano"
-//         })
-
-//         await userBusiness.getUsers(input)
-//     } catch (error) {
-//         if(error instanceof ForbiddenError) {
-//             expect(error.statusCode).toBe(403),
-//             expect(error.message).toBe("Somente admins podem ter acesso aos usuários")
-//         }
-//     }
-// })
-
 test("deve disparar um erro se o token não for válido", async () => {
   expect.assertions(2)
   try {

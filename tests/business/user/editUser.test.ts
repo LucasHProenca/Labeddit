@@ -82,5 +82,37 @@ test("deve disparar um erro se o token não for válido", async () => {
     }
   })
   
+  test("deve disparar um erro se o apelido já estiver cadastrado", async () => {
+    expect.assertions(1)
+    try {
+        const input = EditUserSchema.parse({
+            id: "id-mock-fulano",
+            token: "token-mock-fulano",
+            nickname: "Fulano"
+        })
+  
+        await userBusiness.editUser(input)
+    } catch (error) {
+        if(error instanceof BadRequestError) {
+            expect(error.statusCode).toBe(400)
+        }
+    }
+  })
 
+  test("deve disparar um erro se o email já estiver cadastrado", async () => {
+    expect.assertions(1)
+    try {
+        const input = EditUserSchema.parse({
+            id: "id-mock-fulano",
+            token: "token-mock-fulano",
+            email: "fulano@email.com"
+        })
+  
+        await userBusiness.editUser(input)
+    } catch (error) {
+        if(error instanceof BadRequestError) {
+            expect(error.statusCode).toBe(400)
+        }
+    }
+  })
 })
