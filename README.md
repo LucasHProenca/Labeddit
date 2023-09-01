@@ -15,7 +15,7 @@
 🖥 Labeddit - Essa API foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
 Este projeto possui inúmeras funcionalidades, as quais detalharemos mais adiante.
 
-Projeto desenvolvido durante o **Bootcamp Web Full-Stack** da [Labenu](https://www.labenu.com.br/curso-de-programacao-web-full-stack-integral).
+Projeto desenvolvido durante o **Bootcamp Web Full-Stack** da [Labenu](https://www.labenu.com.br/).
 Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de experiência prática em desenvolvimento Full-stack e projetos individuais.
 
 ---
@@ -28,15 +28,17 @@ Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de 
   - [x] editUser  
   - [x] deleteUser
   - [x] getPosts
+  - [x] getPostsLikes
   - [x] createPost
   - [x] editPost
   - [x] likeOrDislikePost
   - [x] deletePost
   - [x] getComments
+  - [x] getCommentsLikes
   - [x] createComment
   - [x] editComment
   - [x] likeOrDislikeComment
-  - [x] deleteComment  
+  - [x] deleteComment
 
 ---
 
@@ -134,7 +136,7 @@ Feito isso acesse a documentação da [API](https://documenter.getpostman.com/vi
 
 #### getUsers
 A requisição getAllUsers tem duas funcionalidades diferentes:
-A requisição getUsers tem a funcionalidade de mostrar a lista de usuários cadastrados no banco de dados, no entanto, apenas "ADMINS" tem acesso a essa funcionalidade, passando um token de autorização compátivel.
+A requisição getUsers tem a funcionalidade de mostrar a lista de usuários cadastrados no banco de dados, passando um token de autorização compátivel.
 
 ![getUsersRequest](https://github.com/LucasHProenca/Labook/assets/106993403/eadecb90-6e5b-4b49-97d5-149ee141ae42)
 
@@ -179,7 +181,7 @@ Como resposta da requisição, o usuário recebe um token de autorização, lemb
 A requisição editUser permite ao usuário editar suas informações pessoais como "nickname", "email" e "password", no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 Apenas o dono da conta pode editar suas informações;
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
-Será necessário abrir uma solicitação para que um administrador informe ao usuário qual é seu "id" que foi gerado no momento em que fez o cadastro no sistema, pois o mesmo não tem acesso a essa informação por questão de segurança.
+Verificar qual é seu id na requisição getUsers;
 Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar as informações de cadastro citadas acima.
 
 ![editUserRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/a025c8f8-71f5-4943-b2a6-c638d63e7f0a)
