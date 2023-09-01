@@ -6,6 +6,7 @@
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
  <a href="#-como-executar">Como executar</a> • 
+ <a href="#-testes-automatizados">Testes automatizados</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#-autor">Autor</a> • 
 </p>
@@ -394,6 +395,30 @@ Também é requerido o "id" específico da comentário, para ser inserido no cam
 
 ---
 
+## ✋ Testes automatizados
+
+Testar código é importantíssimo, pois quando o testamos estamos garantindo seu funcionamento.
+
+Por exemplo:
+
+- quando usamos o Postman para consumir um endpoint de nossa API
+- quando acessamos nosso app React e verificamos o funcionamento de um botão
+- quando damos console.log em uma parte do código para checar o dado
+
+Esses cenários demonstram o uso de testes manuais. Eles são rápidos de serem implementados, mas não carregam um processo automatizado de repetição, então sempre que for necessário testar novamente o mesmo código é preciso recriar todo o processo do zero pela pessoa.
+
+E se fosse possível criar um processo automatizado que testa a aplicação? É aqui que entram os testes automatizados!
+
+Nesse projeto o foco foi testar a camada business, ao menos 70% dela, mas é claro priorizando os pontos mais importantes, no entanto, como o código backend foi executado de forma clara e limpa, conseguimos atingir a marca de 96% dos testes concluídos.
+
+![srcBusinessTestes](https://github.com/LucasHProenca/Labeddit/assets/106993403/54e1503a-4cee-4bd2-a24c-8407dfb5ee96)
+
+![testesBusiness](https://github.com/LucasHProenca/Labeddit/assets/106993403/1b38cbae-9732-4cf5-9279-e025cdf6ceee)
+
+E quanto aos 4% restantes? Vendo que essa não era a prioridade do projeto, foi decidido dar mais atenção a melhoria de outras funcionalidades.
+
+---
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -412,6 +437,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Autenticação e autorização](https://auth0.com/blog/pt-complete-guide-to-nodejs-express-user-authentication/)**
 -   **[Roteamento](https://dev.to/aryclenio/configurando-rotas-no-nodejs-com-typescript-la1)**
 -   **[Postman](https://www.postman.com/)**
+-   **[Testes Unitários](https://www.devmedia.com.br/teste-unitario-com-jest/41234)**
+-   **[Jest](https://jestjs.io/pt-BR/)**
 
 ---
 
