@@ -409,7 +409,7 @@ Esses cenários demonstram o uso de testes manuais. Eles são rápidos de serem 
 
 E se fosse possível criar um processo automatizado que testa a aplicação? É aqui que entram os testes automatizados!
 
-Nesse projeto o foco foi testar a camada business, ao menos 70% dela, mas é claro priorizando os pontos mais importantes, no entanto, como o código backend foi executado de forma clara e limpa, conseguimos atingir a marca de 96% dos testes concluídos.
+Nesse projeto o foco foi automatizar os testes da camada business, ao menos 70% dela, mas é claro, priorizando os pontos mais importantes, no entanto, como o código backend foi executado de forma clara e limpa, foi possível atingir a marca de 96% dos testes concluídos.
 
 ![srcBusinessTestes](https://github.com/LucasHProenca/Labeddit/assets/106993403/54e1503a-4cee-4bd2-a24c-8407dfb5ee96)
 
