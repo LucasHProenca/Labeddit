@@ -118,7 +118,7 @@ Caso tenha dado tudo certo, irá aparecer no menu do banco de dados o nome de su
 
 Para criar as tabelas, basta clicar em "execute" em cada um como mostram as imagens abaixo:
 
-![image](https://github.com/LucasHProenca/Labook/assets/106993403/aca021a6-488d-443e-8b39-395ae961d868)
+![image](https://github.com/LucasHProenca/Labeddit/assets/106993403/31931c44-22fe-4338-9d5c-852c7a060815)
 
 ![image](https://github.com/LucasHProenca/Labook/assets/106993403/f2b4019e-30a6-4ae6-aa38-5c2839711b66)
 
