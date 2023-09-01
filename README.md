@@ -235,6 +235,18 @@ Caso um post cadastrado seja enviado como paramêtro, apenas ele será retornado
 No entanto para ter acesso aos posts será necessário informar um token válido no campo "Authorization" na aba "Headers"
 
 
+#### getPostsLikes
+A requisição getPostsLikes tem a função de retornar qual foi a interação de um usuário com um post, caso ela tenha ocorrido, para isso é necessário:
+
+Verificar qual é o id do post na requisição getPosts;
+
+Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível visualizar se houve interação.
+
+![getPostsLikesRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/b0fefbdd-2721-4928-931b-a0250837c1fa)
+
+![getPostsLikesResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/3c0501ac-7c52-438f-afa9-7e95b11ceefa)
+
+
 #### createPost
 A requisição createPost permite ao usuário criar uma nova postagem, informando apenas o conteúdo "content" da mesma no corpo da requisição.
 
@@ -303,6 +315,19 @@ Também é requerido o "id" específico da postagem, para ser inserido no campo 
 ![getCommentsRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/dc375462-c8f3-4c1d-99ff-f1b27422de0c)
 
 ![getCommentsResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/958c915a-a5e7-424d-80b8-ed6eae1bde75)
+
+
+#### getCommentsLikes
+
+A requisição getCommentsLikes tem a função de retornar qual foi a interação de um usuário com um comentário, caso ela tenha ocorrido, para isso é necessário:
+
+Verificar qual é o id do comments na requisição getComments;
+
+Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível visualizar se houve interação.
+
+![getCommentsLikesRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/197306a1-fd9a-44f3-8029-fb339b776077)
+
+![getCommentsLikesResponse](https://github.com/LucasHProenca/Labeddit/assets/106993403/010a9107-019d-41ab-9936-a35228245906)
 
 
 #### createComment
