@@ -151,6 +151,8 @@ A requisição signUp tem a funcionalidade de cadastrar uma nova conta, porém a
 
 Contudo, foram implementadas as seguintes restrições:
 
+Caso o "nickname" já tenha sido cadastrado por outro usuário, não será possível concluir o cadastro;
+
 Caso o "email" já tenha sido cadastrado por outro usuário, não será possível concluir o cadastro;
 
 Caso o "email" não esteja com a formatação correta (@email.com), não será possível concluir o cadastro;
