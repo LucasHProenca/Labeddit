@@ -135,7 +135,6 @@ Feito isso acesse a documentação da [API](https://documenter.getpostman.com/vi
 #### ATENÇÃO! Todos os exemplos são fictícios, pois não haveria sentido em disponibilizarmos os dados de nossos usuários, portanto utilize essa API para construir a sua própria aplicação.
 
 #### getUsers
-A requisição getAllUsers tem duas funcionalidades diferentes:
 A requisição getUsers tem a funcionalidade de mostrar a lista de usuários cadastrados no banco de dados, passando um token de autorização compátivel.
 
 ![getUsersRequest](https://github.com/LucasHProenca/Labook/assets/106993403/eadecb90-6e5b-4b49-97d5-149ee141ae42)
@@ -151,10 +150,15 @@ A requisição signUp tem a funcionalidade de cadastrar uma nova conta, porém a
 "password".
 
 Contudo, foram implementadas as seguintes restrições:
+
 Caso o "email" já tenha sido cadastrado por outro usuário, não será possível concluir o cadastro;
+
 Caso o "email" não esteja com a formatação correta (@email.com), não será possível concluir o cadastro;
+
 Caso a senha não atenda a um padrão mínimo pré-estabelecido, não será possível concluir o cadastro, no caso do Labook, é obrigatório que "password" tenha entre 8 e 12 caracteres, com letras maiúsculas e minúsculas, e no mínimo um caractere especial.
+
 Todos os usuários cadastrados vem com a "role" como "NORMAL" impedindo seu acesso a recursos que são reservados a administradores.
+
 Como resposta da requisição, o usuário recebe um token de autorização, lembre-se de guardá-lo pois será necessário para acessar as outras funcionalidades do sistema.
 
 ![signUpRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/50aad36c-05bf-4460-b919-e7358ed979e1)
@@ -169,7 +173,9 @@ A requisição login tem a funcionalidade de entrar na sua respectiva conta, por
 "password".
 
 Contudo, foram implementadas as seguintes restrições:
+
 Caso o "email" e o "password" não correspondam com os utilizados no endpoint "signUp", não será possível acessar a conta.
+
 Como resposta da requisição, o usuário recebe um token de autorização, lembre-se de guardá-lo pois será necessário para acessar as outras funcionalidades do sistema.
 
 ![loginRequest](https://github.com/LucasHProenca/Labook/assets/106993403/73ff1c27-97be-4bda-9d66-8342057df239)
@@ -179,9 +185,13 @@ Como resposta da requisição, o usuário recebe um token de autorização, lemb
 
 ##### editUser
 A requisição editUser permite ao usuário editar suas informações pessoais como "nickname", "email" e "password", no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
 Apenas o dono da conta pode editar suas informações;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Verificar qual é seu id na requisição getUsers;
+
 Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar as informações de cadastro citadas acima.
 
 ![editUserRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/a025c8f8-71f5-4943-b2a6-c638d63e7f0a)
@@ -189,9 +199,13 @@ Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" jun
 
 #### deleteUser
 A requisição deleteUser permite ao usuário excluir sua conta, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
+
 Apenas o dono da conta ou um administrador podem apagar um usuário;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
-Caso o usuário queira apagar sua própria conta, será necessário abrir uma solicitação para que um administrador informe a pessoa qual é seu "id" que foi gerado no momento em que fez o cadastro no sistema, pois o mesmo não tem acesso a essa informação por questão de segurança.
+
+Caso o usuário queira apagar sua própria conta, será necessário verificar qual é seu id na requisição getUsers;
+
 Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível apagar o cadastro do usuário.
 
 ![deleteUser](https://github.com/LucasHProenca/Labook/assets/106993403/34138930-9f9d-4d88-8b4e-d2af067e9d0d)
@@ -199,6 +213,7 @@ Com o id em mãos, basta inseri-lo no campo "Path Variables" na aba "Params" jun
 
 #### getPosts
 A requisição getPosts possui duas funcionalides diferentes:
+
 Caso nada seja escrito após "/posts" será retornada a lista completa de posts, como podemos ver no exemplo "getPostsF1";
 
 ![getPostsF1Request](https://github.com/LucasHProenca/Labook/assets/106993403/08f098a8-e84f-4c31-9e6e-a71e48d7deb1)
@@ -206,7 +221,9 @@ Caso nada seja escrito após "/posts" será retornada a lista completa de posts,
 ![getPostsF1Response](https://github.com/LucasHProenca/Labeddit/assets/106993403/e9aaf276-8352-4529-9286-3f1512deb99d)
 
 Caso um post não cadastrado seja enviado como paramêtro, por exemplo, "/posts?q=qualquer-coisa-aqui", será retornada uma lista vazia que é referenciada por [ ];
+
 Caso não seja inserido um "content" completo representado pelo paramêtro "q", seram retornados todos os posts que contenham os paramêtros inseridos;
+
 Caso um post cadastrado seja enviado como paramêtro, apenas ele será retornado, como podemos ver no exemplo "getPostsF2".
 
 ![getPostsF2Request](https://github.com/LucasHProenca/Labeddit/assets/106993403/fa7ede36-4fd2-4757-844e-cb86cd95b450)
@@ -218,6 +235,7 @@ No entanto para ter acesso aos posts será necessário informar um token válido
 
 #### createPost
 A requisição createPost permite ao usuário criar uma nova postagem, informando apenas o conteúdo "content" da mesma no corpo da requisição.
+
 Entretanto é necessário também informar um token válido no campo "Authorization" na aba "Headers".
 
 ![createPostRequest](https://github.com/LucasHProenca/Labook/assets/106993403/35dddaa8-d0cb-42e2-bd64-0aebd2d6d62f)
@@ -227,7 +245,9 @@ Entretanto é necessário também informar um token válido no campo "Authorizat
 A requisição editPost permite ao usuário editar o conteúdo "content" da sua publicação, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Apenas o dono do post pode editá-lo;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar a sua publicação.
 
 ![editPostRequest](https://github.com/LucasHProenca/Labook/assets/106993403/0fea1dc5-c3ec-48f2-9300-529cab91d731)
@@ -237,13 +257,19 @@ Também é requerido o "id" específico da postagem, para ser inserido no campo 
 A requisição likeOrDislikePost tem duas funcionalidades que, permitem ao usuário manifestar se gostou ou não gostou do conteúdo publicado por outra pessoa, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Quem criou o post não pode dar like ou dislike no mesmo;
+
 Caso dê um like em um post que já tenha dado like, o like é desfeito;
+
 Caso dê um dislike em um post que já tenha dado dislike, o dislike é desfeito;
+
 Caso dê um like em um post que tenha dado dislike, o like sobrescreve o dislike;
+
 Caso dê um dislike em um post que tenha dado like, o dislike sobrescreve o like;
 
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar a sua publicação.
+
 Caso queira dar like num post, basta informar "like": true, no corpo da requisição "likePostF1";
 
 ![likePostF1Request](https://github.com/LucasHProenca/Labook/assets/106993403/bbfc908b-58b9-4cfc-8408-61652d224bc9)
@@ -257,7 +283,9 @@ Caso queira dar dislike num post, basta informar "like": false, no corpo da requ
 A requisição deletePost permite ao usuário excluir seu post, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Apenas o dono da publicação ou um administrador podem apagar um post;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível deletar a sua publicação.
 
 ![deletePostRequest](https://github.com/LucasHProenca/Labook/assets/106993403/89dce26f-752b-41ad-bb30-6197d715502f)
@@ -267,6 +295,7 @@ Também é requerido o "id" específico da postagem, para ser inserido no campo 
 A requisição getComments permite ao usuário visualizar lista de comentários publicados em um determinado post, contudo algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", com isso torna-se possível visualizar todos os comentários do post.
 
 ![getCommentsRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/dc375462-c8f3-4c1d-99ff-f1b27422de0c)
@@ -276,9 +305,11 @@ Também é requerido o "id" específico da postagem, para ser inserido no campo 
 
 #### createComment
 A requisição createComment permite ao usuário criar um novo comentário em um post, informando o conteúdo "content" da mesma no corpo da requisição.
+
 Entretanto é necessário também informar:
 
 O token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da postagem, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", com isso torna-se possível criar um comentário no post.
 
 ![createCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/d6445f65-ad73-4c01-85f5-0ec2b451d8a7)
@@ -288,7 +319,9 @@ Também é requerido o "id" específico da postagem, para ser inserido no campo 
 A requisição editComment permite ao usuário editar o conteúdo "content" do seu comentário, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Apenas o dono do comentário pode edita-lo;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico do comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", então, torna-se possível editar seu comentário.
 
 ![editCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/ef188251-4728-4c41-bcf8-20e38ea60465)
@@ -298,13 +331,19 @@ Também é requerido o "id" específico do comentário, para ser inserido no cam
 A requisição likeOrDislikeComment tem duas funcionalidades que, permitem ao usuário manifestar se gostou ou não gostou do conteúdo comentado por outra pessoa, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Quem criou o comentário não pode dar like ou dislike no mesmo;
+
 Caso dê um like em um comentário que já tenha dado like, o like é desfeito;
+
 Caso dê um dislike em um comentário que já tenha dado dislike, o dislike é desfeito;
+
 Caso dê um like em um comentário que tenha dado dislike, o like sobrescreve o dislike;
+
 Caso dê um dislike em um comentário que tenha dado like, o dislike sobrescreve o like;
 
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico do comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível editar a sua publicação.
+
 Caso queira dar like num comentário, basta informar "like": true, no corpo da requisição "likeCommentF1";
 
 ![likeCommentF1Request](https://github.com/LucasHProenca/Labeddit/assets/106993403/f77eea55-844c-4770-9261-c8cd6675d88e)
@@ -318,7 +357,9 @@ Caso queira dar dislike num comentário, basta informar "like": false, no corpo 
 A requisição deleteComment permite ao usuário excluir seu comentário, no entanto, algumas restrições foram implementadas para o uso dessa funcionalidade, são essas:
 
 Apenas o dono do comentário ou um administrador podem apagar um comment;
+
 Será necessário passar o token gerado no login para comprovar que a pessoa é realmente quem ela diz ser;
+
 Também é requerido o "id" específico da comentário, para ser inserido no campo "Path Variables" na aba "Params" junto ao token no campo "Authorization" na aba "Headers", e torna-se possível deletar seu comentário.
 
 ![deleteCommentRequest](https://github.com/LucasHProenca/Labeddit/assets/106993403/35ce5a82-ccca-4fb6-999f-2e744598b11e)
