@@ -13,7 +13,7 @@
 
 ## 💻 Sobre o projeto
 
-🖥 Labeddit - Essa API foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
+🖥 Labeddit - Essa [API](https://documenter.getpostman.com/view/27682612/2s9Y5R36ij#ad2c5672-46e9-491f-aeca-96ac4e504ed1) foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
 Este projeto possui inúmeras funcionalidades, as quais detalharemos mais adiante.
 
 Você pode conferir o repositório frontend clicando [aqui](https://github.com/LucasHProenca/Labeddit-frontend/blob/main/nome-do-seu-app/README.md)
