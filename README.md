@@ -16,6 +16,8 @@
 🖥 Labeddit - Essa API foi desenvolvida baseada numa rede social famosa e com o objetivo de possibilitar o cadastro de novos usuários, assim como a criação de publicações e comentários e a interação entre as pessoas, podendo cada uma manifestar se gostou ou não daquele conteúdo exibido por outro usuário.
 Este projeto possui inúmeras funcionalidades, as quais detalharemos mais adiante.
 
+Você pode conferir o repositório frontend clicando [aqui](https://github.com/LucasHProenca/Labeddit-frontend/blob/main/nome-do-seu-app/README.md)
+
 Projeto desenvolvido durante o **Bootcamp Web Full-Stack** da [Labenu](https://www.labenu.com.br/).
 Esse bootcamp é uma experiência online, um programa com mais de 1000 horas de experiência prática em desenvolvimento Full-stack e projetos individuais.
 
